@@ -24,10 +24,14 @@ $config['cep_origin'] = '78125590';
 
 $config['pagseguro_seller'] = 'awregulagem@hotmail.com';
 
+//Informações Mercado Pago
+$config['mp_appid'] = '5021185167409685';
+$config['mp_key'] = 'JuWlsLxA33m7lbab8k19ICxOjG9vv8rP';
+
 $db = new PDO("mysql:dbname=".$config['dbname'].";host=".$config['host'], $config['dbuser'], $config['dbpass']);
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// Cofigura��es do Pag Seguro
+// Cofigurações do Pag Seguro
 \PagSeguro\Library::initialize();
 \PagSeguro\Library::cmsVersion()->setName("NovaLoja")->setRelease("1.0.0");
 \PagSeguro\Library::moduleVersion()->setName("NovaLoja")->setRelease("1.0.0");

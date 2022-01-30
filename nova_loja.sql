@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 23-Jan-2022 às 17:48
+-- Tempo de geração: 30-Jan-2022 às 09:42
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 7.4.13
 
@@ -254,7 +254,11 @@ INSERT INTO `purchases` (`id`, `id_user`, `id_coupon`, `total_amount`, `payment_
 (21, 2, NULL, 0, 'psckttransparente', 1),
 (22, 2, NULL, 531.06, 'psckttransparente', 1),
 (23, 2, NULL, 531.06, 'psckttransparente', 1),
-(24, 2, NULL, 327.06, 'psckttransparente', 1);
+(24, 2, NULL, 327.06, 'psckttransparente', 1),
+(25, 5, NULL, 429.06, 'mp', 1),
+(26, 5, NULL, 429.06, 'mp', 1),
+(27, 6, NULL, 429.06, 'mp', 1),
+(28, 7, NULL, 429.06, 'mp', 1);
 
 -- --------------------------------------------------------
 
@@ -295,7 +299,11 @@ INSERT INTO `purchases_products` (`id`, `id_purchase`, `id_product`, `quantity`,
 (18, 19, 1, 1, 499),
 (19, 22, 1, 1, 499),
 (20, 23, 1, 1, 499),
-(21, 24, 5, 1, 299);
+(21, 24, 5, 1, 299),
+(22, 25, 2, 1, 399),
+(23, 26, 2, 1, 399),
+(24, 27, 2, 1, 399),
+(25, 28, 2, 1, 399);
 
 -- --------------------------------------------------------
 
@@ -354,7 +362,8 @@ INSERT INTO `users` (`id`, `email`, `password`, `name`) VALUES
 (1, 'carlosfreevg@gmail.com', '698dc19d489c4e4db73e28a713eab07b', 'Carlos Alberto'),
 (2, 'c53506150352904262381@sandbox.pagseguro.com.br', 'xRj8143TGtGy3200', NULL),
 (3, 'cc53506150352904262381@sandbox.pagseguro.com.br /><br/><br/><strong>Senha:</strong><br/><input type=', '', NULL),
-(4, 'c53506150352904262381@sandbox.pagseguro.com.br /><br/><br/><strong>Senha:</strong><br/><input type=', '', NULL);
+(4, 'c53506150352904262381@sandbox.pagseguro.com.br /><br/><br/><strong>Senha:</strong><br/><input type=', '', NULL),
+(7, 'teste@hotmail.com', '202cb962ac59075b964b07152d234b70', NULL);
 
 --
 -- Índices para tabelas despejadas
@@ -494,13 +503,13 @@ ALTER TABLE `products_options`
 -- AUTO_INCREMENT de tabela `purchases`
 --
 ALTER TABLE `purchases`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de tabela `purchases_products`
 --
 ALTER TABLE `purchases_products`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de tabela `purchase_transactions`
@@ -518,7 +527,7 @@ ALTER TABLE `rates`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
