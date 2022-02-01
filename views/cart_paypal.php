@@ -1,4 +1,4 @@
-<h1>Checkout Mercado Pago</h1>
+<h1>Checkout PayPal</h1>
 
 <h3>Dados Pessoais</h3>
 

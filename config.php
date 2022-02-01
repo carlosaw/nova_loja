@@ -22,11 +22,16 @@ if(ENVIRONMENT == 'development') {
 $config['default_lang'] = 'pt-br';
 $config['cep_origin'] = '78125590';
 
+// Informações do PagSeguro
 $config['pagseguro_seller'] = 'awregulagem@hotmail.com';
 
 //Informações Mercado Pago
 $config['mp_appid'] = '5021185167409685';
 $config['mp_key'] = 'JuWlsLxA33m7lbab8k19ICxOjG9vv8rP';
+
+// Informações do Paypal
+$config['paypal_clientid'] = 'AToTrCxd-P1hR-PmPqb2prwCFcQjD7Fva0t6D8ttcdNx6EMUNszFHWGEvUUy-tEPH1wUFcELTi5JSzew';
+$config['paypal_secret'] = 'ELzKKj7E7vtxGECKf9rYXap8SH6pHwzxyiwNQSMvuJli4OLAnT0YnSTY6ZCiB7PS-bONuAVqu6hvDhCC';
 
 $db = new PDO("mysql:dbname=".$config['dbname'].";host=".$config['host'], $config['dbuser'], $config['dbpass']);
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

@@ -70,6 +70,7 @@
   <select name="payment_type">
     <option value="checkout_transparente">PagSeguro Checkout Transparente</option>
     <option value="mp">Mercado Pago</option>
+    <option value="paypal">Pay Pal</option>
   </select>
 
   <input type="submit" value="Finalizar Compra" class="button"/>
