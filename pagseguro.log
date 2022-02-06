@@ -2057,3 +2057,6 @@ Request ID: xxwFa1SFcoU9gFB_NU4Rkw9UOVoUqzq5s4OxrkMvZBGBJTaEVlGA9w==
 02/02/2022 21:18:14 PagSeguro.Session[info]: Begin
 02/02/2022 21:18:15 PagSeguro.Session[info]: POST: https://ws.sandbox.pagseguro.uol.com.br/v2/sessions?email=awregulagem%40hotmail.com&token=2AA37E35FD25400BAF307E497890E2B8
 02/02/2022 21:18:17 PagSeguro.Session[info]: Session ID: 8565a9f3b99e45a1a560e0c7a7fc700e
+06/02/2022 15:38:52 PagSeguro.Session[info]: Begin
+06/02/2022 15:38:52 PagSeguro.Session[info]: POST: https://ws.sandbox.pagseguro.uol.com.br/v2/sessions?email=awregulagem%40hotmail.com&token=2AA37E35FD25400BAF307E497890E2B8
+06/02/2022 15:38:54 PagSeguro.Session[info]: Session ID: dccd886d0c474788abd72fe110f26ad3

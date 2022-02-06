@@ -26,6 +26,8 @@ $config['cep_origin'] = '78125590';
 $config['pagseguro_seller'] = 'awregulagem@hotmail.com';
 
 //Informações Mercado Pago
+//$config['mp_appid'] = '851368137174680';
+//$config['mp_key'] = 'U8GT0QXB7o2rQYZ3dLxh6BTzYtWrOd5U';
 $config['mp_appid'] = '5021185167409685';
 $config['mp_key'] = 'JuWlsLxA33m7lbab8k19ICxOjG9vv8rP';
 
