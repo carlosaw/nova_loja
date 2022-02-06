@@ -69,7 +69,7 @@ class paypalController extends Controller {
 
         global $config;
         
-        // Integração ao PayPal
+        // Começar a Integração ao PayPal
         $apiContext = new \PayPal\Rest\ApiContext(
           new \PayPal\Auth\OAuthTokenCredential(
             $config['paypal_clientid'],
@@ -89,7 +89,7 @@ class paypalController extends Controller {
 
         $redirectUrls = new \PayPal\Api\RedirectUrls();
         $redirectUrls->setReturnUrl(BASE_URL.'paypal/obrigado');
-        $redirectUrls->setCancelUrl(BASE_URL.'paypal/cancelado');
+        $redirectUrls->setCancelUrl(BASE_URL.'paypal/cancelou');
 
         $payment = new \PayPal\Api\Payment();
         $payment->setIntent('sale');
@@ -108,7 +108,6 @@ class paypalController extends Controller {
           exit;
         }
       }
-
     }
 
     $this->loadTemplate('cart_paypal', $dados);
@@ -158,28 +157,28 @@ class paypalController extends Controller {
         } else {
           $purchases->setCancelled($ref);
 
-          header("Location: ".BASE_URL."paypal/cancelado");
+          header("Location: ".BASE_URL."paypal/cancelar");
           exit;
         }
 
       } catch(Exception $e) {
-        header("Location: ".BASE_URL."paypal/cancelado");
+        header("Location: ".BASE_URL."paypal/cancelar");
         exit;
       }
 
     } catch(Exception $e) {
-      header("Location: ".BASE_URL."paypal/cancelado");
+      header("Location: ".BASE_URL."paypal/cancelar");
       exit;
     }
 
   }
-  public function cancelado() {
+  public function cancelar() {
     unset($_SESSION['cart']);
 
     $store = new Store();
     $dados = $store->getTemplateData();
 
-    $this->loadTemplate('paypal_cancelado', $dados);
+    $this->loadTemplate('paypal_cancelar', $dados);
   }
 
 }

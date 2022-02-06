@@ -33,6 +33,12 @@ $config['mp_key'] = 'JuWlsLxA33m7lbab8k19ICxOjG9vv8rP';
 $config['paypal_clientid'] = 'AToTrCxd-P1hR-PmPqb2prwCFcQjD7Fva0t6D8ttcdNx6EMUNszFHWGEvUUy-tEPH1wUFcELTi5JSzew';
 $config['paypal_secret'] = 'ELzKKj7E7vtxGECKf9rYXap8SH6pHwzxyiwNQSMvuJli4OLAnT0YnSTY6ZCiB7PS-bONuAVqu6hvDhCC';
 
+// Informações do Gerencianet
+$config['gerencianet_clientid'] = 'Client_Id_1c50ae8825e263515c4914f07f5385581d389ab2';
+$config['gerencianet_clientsecret'] = 'Client_Secret_e9ae23fdee5a5b7dff9337caf068c3ae0763b463';
+$config['gerencianet_sandbox'] = true;// Muda para false em "production".
+
+// Banco de Dados
 $db = new PDO("mysql:dbname=".$config['dbname'].";host=".$config['host'], $config['dbuser'], $config['dbpass']);
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

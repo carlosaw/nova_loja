@@ -37,9 +37,17 @@ class Purchases extends Model {
 
     $sql = "UPDATE purchases SET payment_status = :status WHERE id = :id";
     $sql = $this->db->prepare($sql);
-    $sql->bindValue(':status', '2');
+    $sql->bindValue(':status', '3');
     $sql->bindValue(':id', $id);
     $sql->execute();
 
   }
+
+  public function updateBilletUrl($id, $link) {
+    $sql = "UPDATE purchases SET billet_link = :link WHERE id = :id";
+    $sql = $this->db->prepare($sql);
+    $sql->bindValue(':link', $link);
+    $sql->bindValue(':id', $id);
+    $sql->execute();
+  } 
 }
