@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30-Jan-2022 às 09:42
--- Versão do servidor: 10.4.17-MariaDB
--- versão do PHP: 7.4.13
+-- Tempo de geração: 06-Fev-2022 às 15:37
+-- Versão do servidor: 10.4.22-MariaDB
+-- versão do PHP: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -223,42 +223,47 @@ CREATE TABLE `purchases` (
   `id_coupon` int(11) DEFAULT NULL,
   `total_amount` float NOT NULL,
   `payment_type` varchar(100) DEFAULT NULL,
-  `payment_status` int(11) NOT NULL
+  `payment_status` int(11) NOT NULL,
+  `billet_link` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `purchases`
 --
 
-INSERT INTO `purchases` (`id`, `id_user`, `id_coupon`, `total_amount`, `payment_type`, `payment_status`) VALUES
-(1, 2, NULL, 429.06, 'psckttransparente', 1),
-(2, 2, NULL, 429.06, 'psckttransparente', 1),
-(3, 3, NULL, 3809.06, 'psckttransparente', 1),
-(4, 4, NULL, 3809.06, 'psckttransparente', 1),
-(5, 2, NULL, 529.06, 'psckttransparente', 1),
-(6, 2, NULL, 529.06, 'psckttransparente', 1),
-(7, 2, NULL, 529.06, 'psckttransparente', 1),
-(8, 2, NULL, 529.06, 'psckttransparente', 1),
-(9, 2, NULL, 531.06, 'psckttransparente', 1),
-(10, 2, NULL, 531.06, 'psckttransparente', 1),
-(11, 2, NULL, 531.06, 'psckttransparente', 1),
-(12, 2, NULL, 531.06, 'psckttransparente', 1),
-(13, 2, NULL, 531.06, 'psckttransparente', 1),
-(14, 2, NULL, 531.06, 'psckttransparente', 1),
-(15, 2, NULL, 531.06, 'psckttransparente', 1),
-(16, 2, NULL, 531.06, 'psckttransparente', 1),
-(17, 2, NULL, 531.06, 'psckttransparente', 1),
-(18, 2, NULL, 531.06, 'psckttransparente', 1),
-(19, 2, NULL, 531.06, 'psckttransparente', 1),
-(20, 2, NULL, 0, 'psckttransparente', 1),
-(21, 2, NULL, 0, 'psckttransparente', 1),
-(22, 2, NULL, 531.06, 'psckttransparente', 1),
-(23, 2, NULL, 531.06, 'psckttransparente', 1),
-(24, 2, NULL, 327.06, 'psckttransparente', 1),
-(25, 5, NULL, 429.06, 'mp', 1),
-(26, 5, NULL, 429.06, 'mp', 1),
-(27, 6, NULL, 429.06, 'mp', 1),
-(28, 7, NULL, 429.06, 'mp', 1);
+INSERT INTO `purchases` (`id`, `id_user`, `id_coupon`, `total_amount`, `payment_type`, `payment_status`, `billet_link`) VALUES
+(1, 2, NULL, 429.06, 'psckttransparente', 1, ''),
+(2, 2, NULL, 429.06, 'psckttransparente', 1, ''),
+(3, 3, NULL, 3809.06, 'psckttransparente', 1, ''),
+(4, 4, NULL, 3809.06, 'psckttransparente', 1, ''),
+(5, 2, NULL, 529.06, 'psckttransparente', 1, ''),
+(6, 2, NULL, 529.06, 'psckttransparente', 1, ''),
+(7, 2, NULL, 529.06, 'psckttransparente', 1, ''),
+(8, 2, NULL, 529.06, 'psckttransparente', 1, ''),
+(9, 2, NULL, 531.06, 'psckttransparente', 1, ''),
+(10, 2, NULL, 531.06, 'psckttransparente', 1, ''),
+(11, 2, NULL, 531.06, 'psckttransparente', 1, ''),
+(12, 2, NULL, 531.06, 'psckttransparente', 1, ''),
+(13, 2, NULL, 531.06, 'psckttransparente', 1, ''),
+(14, 2, NULL, 531.06, 'psckttransparente', 1, ''),
+(15, 2, NULL, 531.06, 'psckttransparente', 1, ''),
+(16, 2, NULL, 531.06, 'psckttransparente', 1, ''),
+(17, 2, NULL, 531.06, 'psckttransparente', 1, ''),
+(18, 2, NULL, 531.06, 'psckttransparente', 1, ''),
+(19, 2, NULL, 531.06, 'psckttransparente', 1, ''),
+(20, 2, NULL, 0, 'psckttransparente', 1, ''),
+(21, 2, NULL, 0, 'psckttransparente', 1, ''),
+(22, 2, NULL, 531.06, 'psckttransparente', 1, ''),
+(23, 2, NULL, 531.06, 'psckttransparente', 1, ''),
+(24, 2, NULL, 327.06, 'psckttransparente', 1, ''),
+(25, 5, NULL, 429.06, 'mp', 1, ''),
+(26, 5, NULL, 429.06, 'mp', 1, ''),
+(27, 6, NULL, 429.06, 'mp', 1, ''),
+(28, 7, NULL, 429.06, 'mp', 1, ''),
+(29, 7, NULL, 429.06, 'paypal', 1, ''),
+(30, 7, NULL, 429.06, 'paypal', 1, 'https://visualizacaosandbox.gerencianet.com.br/emissao/238125_8_XIENA1/A4XB-238125-3-XIDO8'),
+(31, 7, NULL, 529.06, 'paypal', 1, ''),
+(32, 7, NULL, 529.06, 'paypal', 1, 'https://visualizacaosandbox.gerencianet.com.br/emissao/238125_9_LUACA9/A4XB-238125-4-LAENA5');
 
 -- --------------------------------------------------------
 
@@ -303,7 +308,11 @@ INSERT INTO `purchases_products` (`id`, `id_purchase`, `id_product`, `quantity`,
 (22, 25, 2, 1, 399),
 (23, 26, 2, 1, 399),
 (24, 27, 2, 1, 399),
-(25, 28, 2, 1, 399);
+(25, 28, 2, 1, 399),
+(26, 29, 2, 1, 399),
+(27, 30, 2, 1, 399),
+(28, 31, 1, 1, 499),
+(29, 32, 1, 1, 499);
 
 -- --------------------------------------------------------
 
@@ -503,13 +512,13 @@ ALTER TABLE `products_options`
 -- AUTO_INCREMENT de tabela `purchases`
 --
 ALTER TABLE `purchases`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de tabela `purchases_products`
 --
 ALTER TABLE `purchases_products`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de tabela `purchase_transactions`
