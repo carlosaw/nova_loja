@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 06-Fev-2022 às 15:37
+-- Tempo de geração: 28-Fev-2022 às 13:52
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 7.4.26
 
@@ -65,8 +65,7 @@ INSERT INTO `categories` (`id`, `sub`, `name`) VALUES
 (9, 7, 'Microfones'),
 (10, 8, 'Com fio'),
 (11, 8, 'Sem fio'),
-(12, 9, 'Com fio'),
-(13, 9, 'Sem fio');
+(12, 9, 'Com fio');
 
 -- --------------------------------------------------------
 
@@ -114,6 +113,93 @@ CREATE TABLE `pages` (
   `body` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Extraindo dados da tabela `pages`
+--
+
+INSERT INTO `pages` (`id`, `title`, `body`) VALUES
+(2, 'Política de Privacidade', '<p>Qualquer texto que eu quiser...</p>'),
+(3, 'Termos de Uso', '<p>Qualquer texto que eu quiser...</p>'),
+(4, 'Política de Devolução', '<p><strong>Qualquer</strong> <span style=\"background-color: #f1c40f;\">texto</span> que eu <strong>quiser</strong>...</p>\r\n<p><img src=\"../../../nova_loja/media/pages/c777ccc883f7b5acfe49dfd9cd5fbc71.jpg\" alt=\"\" width=\"378\" height=\"206\" /></p>');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `permission_groups`
+--
+
+CREATE TABLE `permission_groups` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `permission_groups`
+--
+
+INSERT INTO `permission_groups` (`id`, `name`) VALUES
+(1, 'Super Administrador'),
+(2, 'Administrador'),
+(3, 'Gerente'),
+(5, 'Vendedor');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `permission_items`
+--
+
+CREATE TABLE `permission_items` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `slug` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `permission_items`
+--
+
+INSERT INTO `permission_items` (`id`, `name`, `slug`) VALUES
+(1, 'Criar Cupom de Oferta', 'cupom_create'),
+(2, 'Ver Permissões', 'permissions_view'),
+(4, 'Ver Categorias', 'categories_view'),
+(5, 'Ver Marcas', 'brands_view'),
+(7, 'Ver Páginas', 'pages_view'),
+(8, 'Ver Produtos', 'products_view'),
+(9, 'Ver Usuários', 'users_view');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `permission_links`
+--
+
+CREATE TABLE `permission_links` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `id_permission_group` int(11) NOT NULL DEFAULT 0,
+  `id_permission_item` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `permission_links`
+--
+
+INSERT INTO `permission_links` (`id`, `id_permission_group`, `id_permission_item`) VALUES
+(16, 3, 1),
+(17, 3, 2),
+(21, 2, 1),
+(22, 2, 2),
+(40, 5, 1),
+(41, 5, 2),
+(42, 5, 4),
+(49, 1, 1),
+(50, 1, 2),
+(51, 1, 4),
+(52, 1, 5),
+(53, 1, 7),
+(54, 1, 8),
+(55, 1, 9);
+
 -- --------------------------------------------------------
 
 --
@@ -125,7 +211,7 @@ CREATE TABLE `products` (
   `id_category` int(11) NOT NULL,
   `id_brand` int(11) NOT NULL,
   `name` varchar(100) NOT NULL DEFAULT '',
-  `description` text DEFAULT NULL,
+  `description` text DEFAULT '',
   `stock` int(11) NOT NULL,
   `price` float NOT NULL,
   `price_from` float NOT NULL,
@@ -148,13 +234,16 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `id_category`, `id_brand`, `name`, `description`, `stock`, `price`, `price_from`, `rating`, `featured`, `sale`, `bestseller`, `new_product`, `options`, `weight`, `width`, `height`, `length`, `diameter`) VALUES
 (1, 6, 1, 'Monitor 21 polegadas', 'Alguma descrição do produto.', 10, 499, 599, 0, 1, 1, 1, 0, '1,2,4', 0.9, 20, 15, 20, 15),
-(2, 6, 2, 'Monitor 18 polegadas', 'Alguma outra descrição', 10, 399, 999, 2, 1, 1, 1, 0, '1,2', 0.8, 20, 15, 20, 15),
+(2, 6, 2, 'Monitor 18 polegadas', '<p>Alguma outra descri&ccedil;&atilde;o</p>', 10, 399, 999, 4, 1, 1, 1, 0, '1,2', 0.8, 20, 15, 20, 15),
 (3, 6, 2, 'Monitor 19 polegadas', 'Alguma outra descrição', 10, 3779, 4399, 0, 1, 0, 0, 1, '1,2', 0.7, 20, 15, 20, 15),
 (4, 6, 3, 'Monitor 17 polegadas', 'Alguma outra descrição', 10, 779, 900, 2, 1, 1, 0, 0, '1,4', 0.6, 20, 15, 20, 15),
 (5, 6, 1, 'Monitor 20 polegadas', 'Alguma outra descrição', 10, 299, 499, 0, 1, 0, 0, 1, '1', 0.5, 20, 15, 20, 15),
 (6, 6, 3, 'Monitor 20 polegadas', 'Alguma outra descrição', 10, 699, 0, 5, 1, 0, 0, 0, '1,2,4', 0.4, 20, 15, 20, 15),
 (7, 6, 3, 'Monitor 19 polegadas', 'Alguma outra descrição', 10, 889, 999, 0, 1, 0, 0, 0, '2,4', 0.3, 20, 15, 20, 15),
-(8, 6, 1, 'Monitor 18 polegadas', 'Alguma outra descrição', 10, 599, 699, 0, 1, 0, 0, 0, '4', 0.2, 20, 15, 20, 15);
+(8, 6, 1, 'Monitor 18 polegadas', 'Alguma outra descrição', 10, 599, 699, 0, 1, 0, 0, 0, '4', 0.2, 20, 15, 20, 15),
+(22, 9, 4, 'Microfone Apple', '<p>Muito interessante</p>', 3, 650, 799, 0, 1, 0, 0, 1, '1,3', 0.2, 2, 3, 4, 5),
+(23, 7, 1, 'Produto com IMAGEM', '<p>Qualquer uma...</p>', 2, 95, 100, 0, 1, 0, 1, 0, '1,3', 2, 23, 22, 22, 22),
+(24, 6, 1, 'Produto de TESTE ATUALIZADO', '<p>Qualquer uma...</p>', 12, 122, 123, 0, 1, 0, 1, 0, '1,4', 2, 34, 32, 32, 21);
 
 -- --------------------------------------------------------
 
@@ -183,7 +272,11 @@ INSERT INTO `products_images` (`id`, `id_product`, `url`) VALUES
 (8, 8, '7.jpg'),
 (9, 2, '3.jpg'),
 (10, 2, '4.jpg'),
-(11, 2, '7.jpg');
+(17, 23, '5f572f47db3e505b82cdcb1387c4d565.jpg'),
+(18, 23, '48a1a2c7f86d72def3640d4570323609.jpg'),
+(20, 24, 'ab8d01c34b58802733a82bc2d53c270d.jpg'),
+(21, 24, 'e535c468d45a089b17c3fdf49a5187b7.jpg'),
+(22, 22, '52c07a13d411ee5349b31d78941e8412.jpg');
 
 -- --------------------------------------------------------
 
@@ -205,11 +298,26 @@ CREATE TABLE `products_options` (
 INSERT INTO `products_options` (`id`, `id_product`, `id_option`, `p_value`) VALUES
 (1, 1, 1, 'Azul'),
 (2, 1, 2, '23cm'),
-(3, 1, 4, '21'),
-(4, 2, 1, 'Azul'),
-(5, 2, 2, '19cm'),
-(6, 3, 1, 'Vermelho'),
-(7, 3, 2, '19cm');
+(3, 1, 4, '31'),
+(6, 3, 1, 'Branco'),
+(7, 3, 2, '20cm'),
+(8, 4, 1, 'Preto'),
+(9, 4, 4, '17'),
+(10, 5, 1, 'Vermelho'),
+(11, 6, 1, 'Cinza'),
+(12, 6, 2, '18cm'),
+(13, 6, 4, '20'),
+(14, 7, 2, '18cm'),
+(15, 7, 4, '19'),
+(16, 8, 4, '18'),
+(44, 24, 1, 'Marrom'),
+(45, 24, 4, '54'),
+(46, 22, 1, 'Branco'),
+(47, 22, 3, '4GB'),
+(50, 23, 1, 'Azul'),
+(51, 23, 3, '2GB'),
+(52, 2, 1, 'Azul'),
+(53, 2, 2, '19cm');
 
 -- --------------------------------------------------------
 
@@ -263,7 +371,16 @@ INSERT INTO `purchases` (`id`, `id_user`, `id_coupon`, `total_amount`, `payment_
 (29, 7, NULL, 429.06, 'paypal', 1, ''),
 (30, 7, NULL, 429.06, 'paypal', 1, 'https://visualizacaosandbox.gerencianet.com.br/emissao/238125_8_XIENA1/A4XB-238125-3-XIDO8'),
 (31, 7, NULL, 529.06, 'paypal', 1, ''),
-(32, 7, NULL, 529.06, 'paypal', 1, 'https://visualizacaosandbox.gerencianet.com.br/emissao/238125_9_LUACA9/A4XB-238125-4-LAENA5');
+(32, 7, NULL, 529.06, 'paypal', 1, 'https://visualizacaosandbox.gerencianet.com.br/emissao/238125_9_LUACA9/A4XB-238125-4-LAENA5'),
+(33, 7, NULL, 629.06, 'mp', 1, ''),
+(34, 7, NULL, 629.06, 'mp', 1, ''),
+(35, 7, NULL, 629.06, 'mp', 1, ''),
+(36, 7, NULL, 631.56, 'mp', 1, ''),
+(37, 7, NULL, 631.56, 'mp', 1, ''),
+(38, 7, NULL, 631.56, 'mp', 1, ''),
+(39, 7, NULL, 631.56, 'mp', 1, ''),
+(40, 7, NULL, 631.56, 'mp', 1, ''),
+(41, 7, NULL, 631.56, 'paypal', 1, '');
 
 -- --------------------------------------------------------
 
@@ -312,7 +429,16 @@ INSERT INTO `purchases_products` (`id`, `id_purchase`, `id_product`, `quantity`,
 (26, 29, 2, 1, 399),
 (27, 30, 2, 1, 399),
 (28, 31, 1, 1, 499),
-(29, 32, 1, 1, 499);
+(29, 32, 1, 1, 499),
+(30, 33, 8, 1, 599),
+(31, 34, 8, 1, 599),
+(32, 35, 8, 1, 599),
+(33, 36, 8, 1, 599),
+(34, 37, 8, 1, 599),
+(35, 38, 8, 1, 599),
+(36, 39, 8, 1, 599),
+(37, 40, 8, 1, 599),
+(38, 41, 8, 1, 599);
 
 -- --------------------------------------------------------
 
@@ -347,8 +473,7 @@ CREATE TABLE `rates` (
 --
 
 INSERT INTO `rates` (`id`, `id_product`, `id_user`, `date_rated`, `points`, `comment`) VALUES
-(1, 2, 1, '2022-01-11 21:13:20', 2, 'Produto muito legal'),
-(2, 2, 1, '2022-01-11 21:14:16', 2, 'Produto não muito legal');
+(2, 2, 1, '2022-01-11 21:14:16', 4, 'Produto não muito legal');
 
 -- --------------------------------------------------------
 
@@ -358,21 +483,23 @@ INSERT INTO `rates` (`id`, `id_product`, `id_user`, `date_rated`, `points`, `com
 
 CREATE TABLE `users` (
   `id` int(11) UNSIGNED NOT NULL,
+  `id_permission` int(11) NOT NULL,
   `email` varchar(100) NOT NULL DEFAULT '',
   `password` varchar(32) NOT NULL DEFAULT '',
-  `name` varchar(100) DEFAULT NULL
+  `name` varchar(100) DEFAULT NULL,
+  `admin` tinyint(1) NOT NULL DEFAULT 0,
+  `token` varchar(32) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `password`, `name`) VALUES
-(1, 'carlosfreevg@gmail.com', '698dc19d489c4e4db73e28a713eab07b', 'Carlos Alberto'),
-(2, 'c53506150352904262381@sandbox.pagseguro.com.br', 'xRj8143TGtGy3200', NULL),
-(3, 'cc53506150352904262381@sandbox.pagseguro.com.br /><br/><br/><strong>Senha:</strong><br/><input type=', '', NULL),
-(4, 'c53506150352904262381@sandbox.pagseguro.com.br /><br/><br/><strong>Senha:</strong><br/><input type=', '', NULL),
-(7, 'teste@hotmail.com', '202cb962ac59075b964b07152d234b70', NULL);
+INSERT INTO `users` (`id`, `id_permission`, `email`, `password`, `name`, `admin`, `token`) VALUES
+(1, 1, 'carlosfreevg@gmail.com', '698dc19d489c4e4db73e28a713eab07b', 'Carlos Alberto', 1, 'cc72f3e18e4829eedafc8b38119f4dc3'),
+(2, 0, 'c53506150352904262381@sandbox.pagseguro.com.br', 'xRj8143TGtGy3200', 'SandBox PagSeguro', 0, NULL),
+(7, 5, 'teste@hotmail.com', '698dc19d489c4e4db73e28a713eab07b', 'Teste', 0, NULL),
+(8, 2, 'carlos@gmail.com', '698dc19d489c4e4db73e28a713eab07b', 'Testador', 0, NULL);
 
 --
 -- Índices para tabelas despejadas
@@ -406,6 +533,24 @@ ALTER TABLE `options`
 -- Índices para tabela `pages`
 --
 ALTER TABLE `pages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `permission_groups`
+--
+ALTER TABLE `permission_groups`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `permission_items`
+--
+ALTER TABLE `permission_items`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `permission_links`
+--
+ALTER TABLE `permission_links`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -482,43 +627,61 @@ ALTER TABLE `coupons`
 -- AUTO_INCREMENT de tabela `options`
 --
 ALTER TABLE `options`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de tabela `permission_groups`
+--
+ALTER TABLE `permission_groups`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de tabela `permission_items`
+--
+ALTER TABLE `permission_items`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de tabela `permission_links`
+--
+ALTER TABLE `permission_links`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT de tabela `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de tabela `products_images`
 --
 ALTER TABLE `products_images`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de tabela `products_options`
 --
 ALTER TABLE `products_options`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT de tabela `purchases`
 --
 ALTER TABLE `purchases`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de tabela `purchases_products`
 --
 ALTER TABLE `purchases_products`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de tabela `purchase_transactions`
@@ -536,7 +699,7 @@ ALTER TABLE `rates`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
